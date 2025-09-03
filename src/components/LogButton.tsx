@@ -7,4 +7,4 @@ function LogButton({label, onClick}: LogButtonProp) {
     return <button onClick={onClick}>{label}</button>
 }
 
-export default LogButton
+export default LogButton;
