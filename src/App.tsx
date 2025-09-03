@@ -30,11 +30,11 @@ function App() {
         type='file'
         accept='audio/*' //what
         onChange={(e) => {
-          const file = e.target.files?.[0];
+          const file = e.target.files?.[0]; //gets the first file that was sent
           if (!file) return;
-          const url = URL.createObjectURL(file);
+          const url = URL.createObjectURL(file); //<audio> expects a url so that it can paly the song, the file becomes a temp url
           const el = document.getElementById('player') as HTMLAudioElement | null;
-          if (el) el.src = url;
+          if (el) el.src = url; //now this should work or something 
         }}
       />
       {/* <h1>Form Example</h1>
