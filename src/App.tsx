@@ -1,7 +1,7 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import LogButton from './components/LogButton';
-import TheCanvas from './components/LeCanvas';
+import { useState, useEffect, useRef } from 'react';
+import visualizer from './components/LeVisualizer';
+import Visualizer from './components/LeVisualizer';
 
 type buttonProp = {
   label: string;
@@ -16,6 +16,9 @@ function App() {
   const [count, setCount] = useState(0);
   const [text, setText] = useState("");
   const [isLightMode, setIsLightMode] = useState<boolean>(false);
+
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
   //useEffect to log the count whenever it changes
   useEffect(() => {console.log(`Count is now: ${count}`)} , [count]); //runs when 'count' changes
   return (
@@ -24,19 +27,9 @@ function App() {
         marginTop: "40px",
       }}> 
 
-      <h1>The beginning of a legendary journey</h1>
-      <audio id='player' controls style={{ width: '100%'}} />
-      <input
-        type='file'
-        accept='audio/*' //what
-        onChange={(e) => {
-          const file = e.target.files?.[0]; //gets the first file that was sent
-          if (!file) return;
-          const url = URL.createObjectURL(file); //<audio> expects a url so that it can paly the song, the file becomes a temp url
-          const el = document.getElementById('player') as HTMLAudioElement | null;
-          if (el) el.src = url; //now this should work or something 
-        }}
-      />
+      <h2>hello visualizer</h2>
+      <Visualizer></Visualizer>
+
       {/* <h1>Form Example</h1>
       <input 
         type="text"
